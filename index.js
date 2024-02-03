@@ -90,7 +90,7 @@ class Character {
 // 2.2 Every character should also be able to make rolls. Add the roll method to the Character class.
 
 roll() {
-    return Math.floor(Math.random()+1)
+    return Math.floor(Math.random() * 100) + 1;
 }
 }
 
@@ -111,3 +111,6 @@ robin.companion.companion.inventory = ["small hat", "sunglasses"];
     console.log(robin.companion.companion)              // Frank + health 100 + his inventory + his type
     console.log(robin.companion.companion.type)         // Flea
     console.log(robin.companion.companion.inventory)    // [ 'small hat', 'sunglasses' ]
+// Testing the roll() for companions:
+    console.log(robin.companion.roll())                 // random #: 65
+    console.log(robin.companion.companion.roll())       // random #: 18
