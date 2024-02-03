@@ -1,6 +1,6 @@
 // GLAB 308A.2.1: An Object-Oriented Adventure
 
-// Part 1
+// ================== Part 1
 
 // const adventurer = {
 //     name: "Robin",
@@ -63,7 +63,7 @@ const adventurer = {
         companion: {        // a new object "companion" within an object "companion" within objects of "adventurer"
             name: "Frank",
             type: "Flea",
-            inventory: ["hat", "sunglasses"]            // should "inventory" be renamed to "belongins"?
+            inventory: ["small hat", "sunglasses"]            // should "inventory" be renamed to "belongins"?
         }
     },
     roll (mod = 0) {
@@ -71,4 +71,43 @@ const adventurer = {
         console.log(`${this.name} rolled a ${result}.`)
         }
 }
-console.log(adventurer)
+console.log(adventurer.roll()) // Robin rolled a 3.; Robin rolled a 9. >> Math.floor(Math.random()) in action
+
+
+// ================== Part 2
+
+// When creating classes, begin by searching for the simplest form your data takes. Remember, you can add specificity later by extending the classes.
+// Start with a Character class, which will define generic character entities. Robin and their companions all have a name, so the Character class should definitely include name as one of its properties. At this stage, we will also make the decision that every character should have health (which we will standardize to a maximum of 100, and an inventory (even if the inventory is empty).
+// 2.1 Here is what the basic Character class looks like so far, including a constructor function that allows us to create new characters with whatever name we would like:
+
+class Character {
+    constructor (name) {     //  health, inventory --> you can add specificity later by extending the classes.
+    this.name = name;
+    this.health = 100;
+    this.inventory = [];
+}
+
+// 2.2 Every character should also be able to make rolls. Add the roll method to the Character class.
+
+roll() {
+    return Math.floor(Math.random()+1)
+}
+}
+
+
+// 2.3 Now, we can re-create Robin using the Character class!
+
+const robin = new Character("Robin");
+robin.inventory = ["sword", "potion", "artifact"];
+    console.log(robin.inventory)                // [ 'sword', 'potion', 'artifact' ]
+
+robin.companion = new Character("Leo");
+robin.companion.type = "Cat";
+    console.log(robin.companion.type)           // Cat
+
+robin.companion.companion = new Character("Frank");
+robin.companion.companion.type = "Flea";
+robin.companion.companion.inventory = ["small hat", "sunglasses"];
+    console.log(robin.companion.companion)              // Frank + health 100 + his inventory + his type
+    console.log(robin.companion.companion.type)         // Flea
+    console.log(robin.companion.companion.inventory)    // [ 'small hat', 'sunglasses' ]
