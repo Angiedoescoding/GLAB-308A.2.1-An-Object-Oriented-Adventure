@@ -150,3 +150,21 @@ console.log(robinAdv.role);         // shows Hunter
 console.log(robinAdv.inventory);    // array of ['bedroll', '50 gold coins']
 console.log(robinAdv.experience);   // 0
 console.log(robinAdv.scout());      // Robin is scouting ahead...
+
+
+// Finally, change the declaration of Robin and the companions to use the new Adventurer and Companion classes.
+
+class Companion {
+    constructor (name, type, inventory = []) {
+        this.name = name;
+        this.type = type;
+        this.inventory = inventory;
+    }
+
+    companionDataShow() {
+        console.log(`Who: ${this.name}.`);
+        console.log(`Companion's type: ${this.type}.`);
+        console.log(`${this.name}'s inventiry items: ${this.inventory}.`);
+    }
+}
+
