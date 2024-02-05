@@ -169,9 +169,11 @@ class Companion {
 }
 
 
-
 const leo = new Companion ("Leo", "Cat");
 const frank = new Companion ("Frank", "Flea", ["small hat", "sunglasses"])
 
 console.log(leo)
 console.log(frank)
+
+
+// Unsure of what to add to the new "claa Adventurer" for Robin.
