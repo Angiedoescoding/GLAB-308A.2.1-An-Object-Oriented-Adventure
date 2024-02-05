@@ -168,3 +168,10 @@ class Companion {
     }
 }
 
+
+
+const leo = new Companion ("Leo", "Cat");
+const frank = new Companion ("Frank", "Flea", ["small hat", "sunglasses"])
+
+console.log(leo)
+console.log(frank)
