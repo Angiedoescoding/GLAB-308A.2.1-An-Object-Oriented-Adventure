@@ -114,3 +114,39 @@ robin.companion.companion.inventory = ["small hat", "sunglasses"];
 // Testing the roll() for companions:
     console.log(robin.companion.roll())                 // random #: 65
     console.log(robin.companion.companion.roll())       // random #: 18
+
+
+
+// ================== Part 3
+// In order to effectively create companions, we need to extend the Character class for added specificity. Part 3: Class Features.
+// When extending a class, the “child” class inherits all properties of its parents. This means that we do not need to account for the name, health, inventory, or roll method of Character children classes.
+// 3.1 Creating an Adventurer class. What attributes might be specific to an adventure, but that not all characters have? Take a look at our example below, and expand upon it with your own properties and methods.
+
+class Adventurer extends Character {
+constructor (name, role) {
+    super(name);
+    // Adventurers have specialized roles.
+    this.role = role;
+    // Every adventurer starts with a bed and 50 gold coins.
+    this.inventory.push("bedroll", "50 gold coins");
+    this.experience = 0;                // adding experience/level increase based on XP. Setting to 0 here.
+}
+// Adventurers have the ability to scout ahead of them.
+scout () {
+    console.log(`${this.name} is scouting ahead...`);
+    super.roll();
+}
+newLevel() {
+    this.experience +=50;      // new level achieved when 50XP earned
+    console.log(`New experience earned for ${this.name}. + 1 level!`)
+}
+}
+
+// A Character to Adventurer
+
+const robinAdv = new Adventurer ("Robin", "Hunter");
+console.log(robinAdv.name);         // shows Robin
+console.log(robinAdv.role);         // shows Hunter
+console.log(robinAdv.inventory);    // array of ['bedroll', '50 gold coins']
+console.log(robinAdv.experience);   // 0
+console.log(robinAdv.scout());      // Robin is scouting ahead...
